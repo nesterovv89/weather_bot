@@ -17,7 +17,7 @@ async def get_weather(city):
         return c.ERR
 
 
-async def get_weather_current_location():
+async def get_weather_current_location(message):
     """Запрос погоды от АПИ по текущему месту"""
     geo = geocoder.ip('me')
     city = geo.city

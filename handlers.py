@@ -34,7 +34,7 @@ async def get_city(callback: CallbackQuery, state: FSMContext):
 @router.callback_query(F.data == 'current')
 async def get_current(callback: CallbackQuery, state: FSMContext):
     """Прогноз для теукщего города"""
-    response = await get_weather_current_location()
+    response = await get_weather_current_location(callback.message)
     await callback.message.answer(
         text=f'{response}', reply_markup=k.keyboard_2
     )
