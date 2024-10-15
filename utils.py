@@ -1,4 +1,5 @@
 import requests
+import geocoder
 
 import constants as c
 
@@ -18,7 +19,10 @@ async def get_weather(city):
 
 async def get_weather_current_location():
     """Запрос погоды от АПИ по текущему месту"""
-    response = requests.get(f'{url}?format=4')
+    geo = geocoder.ip('me')
+    city = geo.city
+    print (city)
+    response = requests.get(f'{url}{city}?format=4')
     if response.status_code == 200:
         return response.text
     elif response.status_code == 404:
